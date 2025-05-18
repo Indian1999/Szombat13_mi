@@ -1,5 +1,5 @@
 import numpy as np
-from layer import Layer
+from .layer import Layer
 
 class FCLayer(Layer):
     def __init__(self, input_size, output_size):
