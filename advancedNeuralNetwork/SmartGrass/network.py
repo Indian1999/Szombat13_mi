@@ -20,6 +20,6 @@ class Network:
         for i in range(samples):
             output = input[i]
             for layer in self.layers:
-                output = layer.foward_propagation(output)
+                output = layer.forward_propagation(output)
             result.append(output)
         return result
