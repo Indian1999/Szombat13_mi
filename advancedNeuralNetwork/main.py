@@ -13,7 +13,7 @@ model.add(Activation(sigmoid, sigmoid_deriv))
 model.use_loss(mse, mse_deriv)
 
 x_train = np.array([
-    [1,0,1,1,0],
+    [1,0,1,1,0], # 1
     [1,0,1,0,0],
     [0,1,0,1,1],
     [0,0,1,0,1],
@@ -21,5 +21,14 @@ x_train = np.array([
     [0,0,0,0,0]
 ])
 
-print(model.predict(x_train))
+y_train = np.array([
+    [1],
+    [1],
+    [0],
+    [0],
+    [1],
+    [0]
+])
+
+model.fit(x_train, y_train, epochs = 100, learning_rate=0.01, reverb=True)
 

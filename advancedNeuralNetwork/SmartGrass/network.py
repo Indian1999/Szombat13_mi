@@ -23,3 +23,19 @@ class Network:
                 output = layer.forward_propagation(output)
             result.append(output)
         return result
+    
+    def fit(self, train_x, train_y, epochs, learning_rate, reverb = True):
+        for i in range(epochs):
+            error_in_epoch = 0
+            for j in range(len(train_x)):
+                output = train_x[j]
+                for layer in self.layers:
+                    output = layer.forward_propagation(output)
+                error_in_epoch += self.loss(output, train_y[j])
+                error = self.loss_deriv(output, train_y[j])
+                error = error.reshape(-1, 1)
+                for layer in reversed(self.layers):
+                    error = layer.backward_propagation(error, learning_rate)
+            error_in_epoch = error_in_epoch / len(train_x)
+            if reverb:
+                print(f" Epoch no. {i+1}, error: {error_in_epoch}")
