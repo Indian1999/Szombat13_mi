@@ -11,3 +11,9 @@ def tanh(x):
 
 def tanh_deriv(x):
     return 1 - tanh(x)**2
+
+def relu(x):
+    return np.maximum(0, x)
+
+def relu_deriv(x):
+    return (x>0).astype(x.dtype)

@@ -33,7 +33,6 @@ class Network:
                     output = layer.forward_propagation(output)
                 error_in_epoch += self.loss(output, train_y[j])
                 error = self.loss_deriv(output, train_y[j])
-                error = error.reshape(-1, 1)
                 for layer in reversed(self.layers):
                     error = layer.backward_propagation(error, learning_rate)
             error_in_epoch = error_in_epoch / len(train_x)
