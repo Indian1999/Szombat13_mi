@@ -1,7 +1,6 @@
 # Feladat: Egy 8x8-as sakktáblára helyezzünk le 8 királynőt, úgy hogy azok
 # ne üssék egymást. Írjuk ki az összes megoldást és hogy hány megoldás van.
 
-
 def is_valid(board):
     # Sorokat nem kell ellenőrizni, mert a lista elemei, különböző sorokat jelölnek
     if len(board) != len(set(board)):
@@ -15,7 +14,7 @@ def is_valid(board):
     return True
 
 counter = 0
-n = 9
+n = 8
 for a in range(1, n+1):
     for b in range(1,n+1):
         for c in range(1, n+1):
@@ -24,9 +23,8 @@ for a in range(1, n+1):
                     for f in range(1,n+1):
                         for g in range(1, n+1):
                             for h in range(1,n+1):
-                                for i in range(1,n+1):
-                                    if is_valid([a,b,c,d,e,f,g,h,i]):
-                                        counter += 1
-                                        print(a,b,c,d,e,f,g,h,i)
+                                if is_valid([a,b,c,d,e,f,g,h]):
+                                    counter += 1
+                                    print(a,b,c,d,e,f,g,h)
                                         
 print("Megoldások száma:", counter)
